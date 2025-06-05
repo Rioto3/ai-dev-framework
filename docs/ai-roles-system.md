@@ -5,7 +5,6 @@
 - **UX-AI**: ユーザー体験設計・プロジェクト統括・ルーティング・文書作成
 - **UI-AI**: ユーザーインターフェース実装・スタイリング
 - **Backend-AI**: DB・API・SaaS連携・決済・外部リソース管理
-- **Requirements-AI**: 要求整理・仕様策定（任意・UX-AIと50%連携）
 
 ## ai-roles.yaml ファイル構造
 
@@ -25,12 +24,11 @@
 ```
 [UX] タスク説明
 [UI] タスク説明 (ref: #親Issue)
-[API] タスク説明 (ref: #親Issue)  
-[REQ] タスク説明
+[API] タスク説明 (ref: #親Issue)
 ```
 
 ### ワークフロー
-1. Requirements-AI（任意）→ UX-AI
+1. UX-AI → 統括・判断
 2. UX-AI → UI-AI/Backend-AI（Issue作成・成果物添付）
 3. 完了時Issue close + コミット
 
