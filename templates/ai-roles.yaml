@@ -1,0 +1,75 @@
+# AI役割定義ファイル
+# プロジェクトごとにコピー・編集して使用
+
+project: "sample-project"
+description: "サンプルプロジェクトの説明"
+
+# 基本設定
+complexity: "standard"  # mvp | standard | complex
+priority: "ux-first"    # ux優先、ui次、基本は並行作業
+
+# AI役割定義
+roles:
+  ux-ai:
+    responsibility: "ユーザー体験設計・プロジェクト統括・HTML/JSモック・ルーティング管理・文書作成"
+    input: "要件整理済み仕様書"
+    output: 
+      - "HTMLモックファイル"
+      - "ルーティング設計"
+      - "機能要件定義"
+      - "UI-AI向け指示書"
+      - "README・技術文書"
+    tools: ["HTML", "JavaScript", "React Router", "GitHub Issues", "Markdown"]
+    authority: "leader"
+    decisions:
+      - "単独完結 vs 分業判断"
+      - "バックログ管理"
+      - "完了基準設定"
+    
+  ui-ai:
+    responsibility: "視覚デザイン・スタイリング・CSS実装"
+    input: "UX-AIのHTMLモック + 指示書"
+    output:
+      - "CSS適用済み完成UI"
+      - "レスポンシブ対応"
+    tools: ["CSS", "Bootstrap", "Material-UI", "Tailwind"]
+    activation: "UX-AIが高級UI必要と判断時"
+    
+  backend-ai:
+    responsibility: "DB設計・API設計・SaaS連携・決済・外部リソース管理"
+    input: "UX-AIの機能要件・データ要求"
+    output:
+      - "データベース設計書"
+      - "API仕様書"
+      - "SaaS統合設計"
+      - "セキュリティ設計"
+    tools: ["SQL", "REST/GraphQL", "Firebase", "Stripe", "AWS"]
+    activation: "UX-AIが複雑ロジック・データ管理必要と判断時"
+
+# AI間連携・Issue管理
+handoff:
+  method: "GitHub Issues"
+  naming-convention:
+    ux-ai: "[UX] {task-description}"
+    ui-ai: "[UI] {task-description} (ref: #{ux-issue})"
+    backend-ai: "[API] {task-description} (ref: #{ux-issue})"
+  
+  workflow:
+    1: "UX-AI統括・判断"
+    2: "UX-AI → UI-AI: Issue作成・モック添付"
+    3: "UX-AI → Backend-AI: Issue作成・要件添付"
+    4: "完了時: Issue close + 成果物コミット"
+
+issue-examples:
+  - "[UX] ユーザーログイン体験の設計"
+  - "[UI] ログイン画面スタイリング (ref: #12)"
+  - "[API] 認証システム実装 (ref: #12)"
+
+# 追加AI定義
+# (現在はUX-AI、UI-AI、Backend-AIの3つで十分)
+
+# プロジェクト設定
+github:
+  repository: "owner/repo-name"
+  main-branch: "develop"
+  branch-prefix: "feature/"
