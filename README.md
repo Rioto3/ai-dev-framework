@@ -11,6 +11,8 @@ AIチーム構成による効率的なプロジェクト開発フレームワー
 - **UI重視**: ユーザー体験が最優先、AIの効率化はそれを支える手段
 - **AI役割分離**: UX設計AI、UI実装AI、文書作成AIなど専門特化
 - **プロジェクト×AI構成**: 1プロジェクトに複数AI、ドキュメントベースで役割定義
+- **GitHub as Backend**: GitHubをバックエンドとし、AIを介した読み書きでUI的に能力拡張
+- **AI-First Design**: 人間の細部デザイン判断を削減、フレームワーク効果を最大化
 
 ## アーキテクチャ
 
@@ -26,6 +28,13 @@ Project A
 - AIごとの責任ブランチ: `uxai/`, `devai/`, `docai/`
 - タスクベース派生: `uxai/landing-flow-v2`
 - GitHub Issue連携によるMVP駆動開発
+
+## AI統合
+
+**主要AI**: Claude (Anthropic)  
+**操作UI**: https://claude.ai/chat/9c4ba6de-6fa9-4089-83ad-81c3d6bb1cdd
+
+このリポジトリは主にAI経由で読み書きされ、GitHubを透明なバックエンドとして活用。
 
 ## 使用方法
 
