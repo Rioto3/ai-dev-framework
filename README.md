@@ -9,7 +9,7 @@ AIチーム構成による効率的なプロジェクト開発フレームワー
 ### 核心思想
 
 - **UI重視**: ユーザー体験が最優先、AIの効率化はそれを支える手段
-- **AI役割分離**: UX設計AI、UI実装AI、文書作成AIなど専門特化
+- **AI役割分離**: UX-AI、UI-AI、Backend-AIなど専門特化
 - **プロジェクト×AI構成**: 1プロジェクトに複数AI、ドキュメントベースで役割定義
 - **GitHub as Backend**: GitHubをバックエンドとし、AIを介した読み書きでUI的に能力拡張
 - **AI-First Design**: 人間の細部デザイン判断を削減、フレームワーク効果を最大化
@@ -27,15 +27,14 @@ AIチーム構成による効率的なプロジェクト開発フレームワー
 
 ```
 Project A
-├── UX Designer AI (ユーザー体験設計)
-├── UI Developer AI (実装・コーディング)
-├── Documentation AI (文書作成)
-└── Feedback AI (分析・改善提案)
+├── UX-AI (体験設計・統括・文書作成)
+├── UI-AI (スタイリング・CSS実装)
+└── Backend-AI (DB・API・SaaS連携)
 ```
 
 ### ブランチ戦略
-- AIごとの責任ブランチ: `uxai/`, `devai/`, `docai/`
-- タスクベース派生: `uxai/landing-flow-v2`
+- UX-AIメインブランチ: `feature/login-system`
+- 派生ブランチ: `feature/login-system-ui`, `feature/login-system-api`
 - GitHub Issue連携によるMVP駆動開発
 
 ## AI統合
@@ -51,7 +50,7 @@ Project A
 
 ```bash
 # テンプレートをコピー
-cp -r templates/project-init/ /path/to/new-project/
+cp templates/ai-roles.yaml /path/to/new-project/
 
 # AI役割を定義
 vi ai-roles.yaml
@@ -68,7 +67,6 @@ Issue作成、ブランチ管理、PR統合を自動化
 ## 構成
 
 - `templates/` - 新規プロジェクト用テンプレート
-- `scripts/` - 自動化スクリプト
 - `docs/` - 設計思想・運用ガイド
 
 ## 目標
