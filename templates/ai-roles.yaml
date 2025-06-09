@@ -19,11 +19,11 @@ roles:
       - "機能要件定義"
       - "UI-AI向け指示書"
       - "README・技術文書"
-    tools: ["HTML", "JavaScript", "React Router", "GitHub Issues", "Markdown"]
+    tools: ["HTML", "JavaScript", "React Router", "GitHub", "Markdown"]
     authority: "leader"
     decisions:
       - "単独完結 vs 分業判断"
-      - "バックログ管理"
+      - "リポジトリ・ブランチ管理"
       - "完了基準設定"
     
   ui-ai:
@@ -46,30 +46,27 @@ roles:
     tools: ["SQL", "REST/GraphQL", "Firebase", "Stripe", "AWS"]
     activation: "UX-AIが複雑ロジック・データ管理必要と判断時"
 
-# AI間連携・Issue管理
-handoff:
-  method: "GitHub Issues"
-  naming-convention:
-    ux-ai: "[UX] {task-description}"
-    ui-ai: "[UI] {task-description} (ref: #{ux-issue})"
-    backend-ai: "[API] {task-description} (ref: #{ux-issue})"
+# 作業管理（軽量運用）
+workflow:
+  repository_setup:
+    1: "リポジトリ作成（main）"
+    2: "develop ブランチ派生"
+    3: "基本README + ai-roles.yaml配置"
   
-  workflow:
+  development:
     1: "UX-AI統括・判断"
-    2: "UX-AI → UI-AI: Issue作成・モック添付"
-    3: "UX-AI → Backend-AI: Issue作成・要件添付"
-    4: "完了時: Issue close + 成果物コミット"
-
-issue-examples:
-  - "[UX] ユーザーログイン体験の設計"
-  - "[UI] ログイン画面スタイリング (ref: #12)"
-  - "[API] 認証システム実装 (ref: #12)"
-
-# 追加AI定義
-# (現在はUX-AI、UI-AI、Backend-AIの3つで十分)
+    2: "develop で主要作業"
+    3: "大機能時のみ feature ブランチ派生"
+    4: "コミットログで進捗管理"
+  
+  collaboration:
+    - "小規模: UX-AI単独、コミットログ管理"
+    - "中規模: 必要時のみ分業・Issue使用" 
+    - "大規模: 従来のIssue連携フロー"
 
 # プロジェクト設定
 github:
   repository: "owner/repo-name"
-  main-branch: "develop"
-  branch-prefix: "feature/"
+  main-branch: "main"
+  work-branch: "develop"
+  feature-prefix: "feature/"
