@@ -1,39 +1,60 @@
-# ブランチ戦略・Issue運用
+# ブランチ戦略・プロジェクト管理
+
+## リポジトリ作成標準フロー
+
+### 必須トランザクション
+1. **リポジトリ作成**（main）
+2. **develop ブランチ派生**
+3. **基本README作成**
+4. **ai-roles.yaml テンプレート配置**
 
 ## ブランチ命名規則
 
-### UXAIメインブランチ
-- `feature/{feature-name}` - 新機能開発
-- `fix/{bug-name}` - バグ修正
-- `improve/{target}` - 改善作業
+### 基本構成
+- `main` - 本番用（保護）
+- `develop` - 開発作業用（デフォルト）
 
-### 派生ブランチ
-- `{type}/{feature-name}-ui` - UIAI作業用
-- `{type}/{feature-name}-api` - Backend作業用
-- `{type}/{feature-name}-doc` - 文書作成用
+### 機能別ブランチ（大機能のみ）
+- `feature/{feature-name}` - UX-AI主導
+- `feature/{feature-name}-ui` - UI-AI作業
+- `feature/{feature-name}-api` - Backend作業
+
+## 作業管理
+
+### コミットログ中心
+- **履歴管理**: Gitコミットで差分・進捗管理
+- **明確なメッセージ**: 作業内容を簡潔に記述
+- **段階的コミット**: 機能単位での細かいコミット
+
+### Issue運用（軽量）
+- **小規模**: Issue不要、コミットログで十分
+- **中規模以上**: 大機能のみIssue作成
+- **複雑プロジェクト**: 従来の[UX][UI]ラベル運用
+
+## 分業判断
+
+### UX-AI単独
+- MVP、シンプルUI
+- 小規模拡張機能
+- プロトタイプ
+
+### 分業必要
+- 高級UI要求
+- 複雑なバックエンド
+- 大規模システム
+
+## ブランチ運用例
+
+```
+main ← 本番
+develop ← 作業メイン
+├── feature/user-auth（大機能時のみ）
+└── feature/user-auth-ui（UI-AI連携時）
+```
 
 ## 作業フロー
 
-1. **Issue作成** - UXAIがタスク定義
-2. **UXAIブランチ** - developから派生、HTML/JSモック作成
-3. **派生ブランチ** - 必要に応じてUXAIブランチから派生
-4. **統合** - 完成後にdevelopへマージ
-
-## Issue管理
-
-### ラベル体系
-- `uxai` - UX設計・統括
-- `uiai` - UI実装
-- `backend` - API/データベース
-- `documentation` - 文書作成
-
-### Issue例
-```
-#1 [UXAIメイン] ユーザーログイン機能の実装
-#2 [UIAI] ログイン画面のスタイリング
-#3 [Backend] 認証API実装
-```
-
-## PR運用
-
-基本はdirect commit、大きな統合時のみPR使用。
+1. **プロジェクト開始**: リポジトリ作成 → develop作成
+2. **実装**: develop で直接作業
+3. **分業時**: feature ブランチ派生
+4. **完成**: main へマージ
