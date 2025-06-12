@@ -9,39 +9,41 @@ AIチーム構成による効率的なプロジェクト開発フレームワー
 ### 核心思想
 
 - **UX重視**: ユーザー体験が最優先、AIの効率化はそれを支える手段
-- **AI役割分離**: UX-AI、UI-AI、Backend-AIなど専門特化
+- **AI役割分離**: UX-AI、Backend-AIの専門特化
 - **プロジェクト×AI構成**: 1プロジェクトに複数AI、ドキュメントベースで役割定義
 - **GitHub as Backend**: GitHubをバックエンドとし、AIを介した読み書きでUI的に能力拡張
 - **AI-First Design**: 人間の細部デザイン判断を削減、フレームワーク効果を最大化
 - **汎用設計**: バックエンド領域を抽象化し、任意分野への適用を可能に
+- **JSX最適化**: 最小コード記述でモック作成
 
 ## アーキテクチャ
 
 ### IT開発の場合
 ```
 Project A
-├── UX-AI (体験設計・統括・文書作成)
-├── UI-AI (スタイリング・CSS実装)
-└── Backend-AI (DB・API・SaaS連携)
+├── UX-AI (体験設計・統括・JSXモック・文書作成)
+├── Backend-AI (API・DB・SaaS連携)
+└── 外部ツール (高級デザイン: Figma等)
 ```
 
 ### 他分野の例
 ```
 建築プロジェクト
 ├── UX-AI (住民体験・動線設計・統括)
-├── Design-AI (建築デザイン・美観)
-└── Construction-AI (施工計画・材料選定)
+├── Backend-AI (構造計算・法規チェック)
+└── 外部ツール (3Dモデリング: AutoCAD等)
 
 飲食店プロジェクト
 ├── UX-AI (客体験・オペレーション設計・統括)
-├── Interior-AI (内装・雰囲気作り)
-└── Kitchen-AI (厨房設計・メニュー開発)
+├── Backend-AI (レシピ管理・原価計算)
+└── 外部ツール (内装デザイン: SketchUp等)
 ```
 
 ## 前提条件
 
 - **GitHub基本操作**: リポジトリ作成、Issue管理、ブランチ操作
 - **AI使用者のリテラシ**: フレームワーク対象分野の基礎知識
+- **JSX理解**: UX-AIの出力物確認用
 - **原則**: AIが扱う範囲において、使用者も同等の最低限リテラシを保持
 
 ## ブランチ戦略
@@ -55,7 +57,7 @@ Project A
 
 ### ブランチ戦略
 - UX-AIメインブランチ: `feature/login-system`
-- 派生ブランチ: `feature/login-system-ui`, `feature/login-system-api`
+- Backend-AI派生ブランチ: `feature/login-system-api`
 - GitHub Issue連携によるMVP駆動開発
 
 ## AI統合
