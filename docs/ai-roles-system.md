@@ -33,17 +33,17 @@
 - **管理**: 詳細Issue + PR連携
 - **ブランチ**: 複数feature並行
 
-## モダンフロントエンド統合
+## html.to.design統合
 
-### Next.js + Builder.io連携
-- **JSX作成**: UX-AIがBuilder.io連携前提で作成
-- **デザイン統合**: Figma ↔ Builder.io双方向連携
-- **外部ツール**: 高級デザイン（Figma等）
+### Claude → Figma直接連携
+- **JSX作成**: UX-AIがArtifact完成度95%
+- **Figma描画**: html.to.design MCP活用
+- **制約**: 月10回制限（無料版）
 
-### バックエンド分離
-- **FastAPI**: Backend-AI専門実装
-- **API連携**: 人間が最終統合
-- **デプロイ**: フロント（Vercel）・バック（任意サーバ）分離
+### Figma → 実装連携
+- **読み取り**: figma-developer-mcp活用
+- **Backend-AI**: Figma + Artifact両方で実装
+- **デザイン調整**: 人間がFigmaで微調整
 
 ## ファイル使用方法
 
