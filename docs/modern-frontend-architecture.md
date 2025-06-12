@@ -2,32 +2,32 @@
 
 ## 概要
 
-UX-AI作成MVPから高品質UIへの双方向連携を実現する統合開発フロー。
+UX-AI作成MVPからFigma連携への直接統合開発フロー。
 
 ## アーキテクチャ構成
 
 ### 基本構成
 ```
-UX-AI (Next.js JSX) ↔ Builder.io ↔ Figma ↔ GitHub
+UX-AI (JSX) → html.to.design → Figma → figma-developer-mcp → 実装
 Backend-AI (FastAPI) ← 人間統合 → フロントエンド
 ```
 
 ### 技術スタック
 - **フロントエンド**: Next.js + TypeScript + Tailwind CSS
-- **デザイン統合**: Builder.io + Figma
+- **デザイン統合**: html.to.design + Figma
 - **バックエンド**: FastAPI
 - **デプロイ**: Vercel (フロント) + 任意サーバ (API)
 
 ## 開発フロー
 
 ### 1. MVP作成（UX-AI）
-- Next.jsページコンポーネント作成
-- Builder.io連携前提の構造
-- 基本的なJSX実装
+- Artifact JSXコンポーネント作成
+- 完成度95%まで調整
+- html.to.design反映準備
 
 ### 2. デザイン統合
 ```
-UX-AI JSX → Builder.io → Figma → UI調整 → Builder.io → Next.js更新
+UX-AI JSX → html.to.design MCP → Figma → デザイン調整 → figma-developer-mcp
 ```
 
 ### 3. バックエンド開発（Backend-AI）
@@ -43,9 +43,9 @@ UX-AI JSX → Builder.io → Figma → UI調整 → Builder.io → Next.js更新
 ## 役割分担
 
 ### UX-AI
-- MVPコンポーネント設計
+- JSXコンポーネント設計
 - ページ構造定義
-- Builder.io連携設計
+- html.to.design連携設計
 
 ### Backend-AI
 - FastAPI専門開発
@@ -59,9 +59,9 @@ UX-AI JSX → Builder.io → Figma → UI調整 → Builder.io → Next.js更新
 
 ## 技術的特徴
 
-### 双方向連携
-- JSX ↔ Figma自動変換
-- デザイン変更の即座反映
+### 直接連携
+- Claude → Figma直接描画
+- Figma → 構造・スタイル完全読み取り
 - コードベース統一管理
 
 ### AI専門化
@@ -77,13 +77,13 @@ UX-AI JSX → Builder.io → Figma → UI調整 → Builder.io → Next.js更新
 ## 制約・注意点
 
 ### 技術制約
-- Tailwind CSS前提
-- Builder.io仲介必須
+- html.to.design月10回制限
+- Figmaは静的表示のみ
 - バックエンド手動連携
 
 ### 運用制約
-- Figma AIは参考程度
-- コード→Figma変換はBuilder.io経由のみ
+- UX-AI完成度95%必須
+- Figma + Artifact両方でBackend-AI連携
 - API連携は人間実装
 
 ## 期待効果
