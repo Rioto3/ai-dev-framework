@@ -15,12 +15,12 @@ roles:
     input: "要件整理済み仕様書"
     output: 
       - "Next.js JSXコンポーネント"
-      - "Builder.io連携設計"
+      - "html.to.design連携設計"
       - "ルーティング設計"
       - "機能要件定義"
       - "Backend-AI向け指示書"
       - "README・技術文書"
-    tools: ["Next.js", "JSX", "Builder.io", "GitHub", "Markdown"]
+    tools: ["Next.js", "JSX", "html.to.design", "GitHub", "Markdown"]
     authority: "leader"
     decisions:
       - "単独完結 vs 分業判断"
@@ -29,7 +29,7 @@ roles:
     
   backend-ai:
     responsibility: "分野特化実装・DB設計・API設計・SaaS連携・決済・外部リソース管理"
-    input: "UX-AIの機能要件・データ要求"
+    input: "UX-AIの機能要件・データ要求・Figma+Artifact両方"
     output:
       - "FastAPI実装"
       - "データベース設計書"
@@ -39,18 +39,18 @@ roles:
     tools: ["FastAPI", "SQL", "REST/GraphQL", "Firebase", "Stripe", "AWS"]
     activation: "UX-AIが複雑ロジック・データ管理必要と判断時"
 
-# モダンフロントエンド統合
+# html.to.design統合
 frontend:
-  technology: "Next.js + Builder.io + Figma"
+  technology: "JSX + html.to.design + Figma"
   workflow:
-    1: "UX-AI JSX作成"
-    2: "Builder.io連携・Figma統合"
-    3: "デザイン調整"
-    4: "コードベース更新"
-  external_tools:
-    - "Figma (高級デザイン)"
-    - "Builder.io (双方向変換)"
-    - "Vercel (デプロイ)"
+    1: "UX-AI Artifact JSX作成（完成度95%）"
+    2: "html.to.design MCP → Figma描画"
+    3: "Figmaでデザイン調整"
+    4: "figma-developer-mcp → 実装連携"
+  constraints:
+    - "html.to.design月10回制限"
+    - "Figma静的表示のみ"
+    - "Backend-AIはFigma+Artifact両方必要"
 
 # 作業管理（軽量運用）
 workflow:
